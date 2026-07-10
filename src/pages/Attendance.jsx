@@ -5,15 +5,64 @@ import { Check, X, Calendar } from 'lucide-react';
 const SEDES = ['Carahue', 'Teodoro', 'Toltén'];
 
 const MOCK_STUDENTS = [
-  { id: 1, nombre_alumno: 'Joaquin Lopez', sede: 'Carahue' },
-  { id: 2, nombre_alumno: 'Mirtha Rabanal', sede: 'Carahue' },
-  { id: 3, nombre_alumno: 'Sixto Burgos', sede: 'Carahue' },
-  { id: 4, nombre_alumno: 'Karlita Alarcon', sede: 'Teodoro' },
-  { id: 5, nombre_alumno: 'Erick Quiñelem', sede: 'Teodoro' },
-  { id: 6, nombre_alumno: 'Greco Muñoz', sede: 'Teodoro' },
-  { id: 7, nombre_alumno: 'Laura Saavedra', sede: 'Toltén' },
-  { id: 8, nombre_alumno: 'Aylin Fuentes', sede: 'Toltén' },
-  { id: 9, nombre_alumno: 'Samuel Beltran', sede: 'Toltén' },
+  { id: 1, nombre_alumno: "Ambar Oliva", sede: "Toltén" },
+  { id: 2, nombre_alumno: "Laura Saavedra", sede: "Toltén" },
+  { id: 3, nombre_alumno: "Aylin Fuentes", sede: "Toltén" },
+  { id: 4, nombre_alumno: "Samuel Beltran", sede: "Toltén" },
+  { id: 5, nombre_alumno: "Benjamin Fernandez", sede: "Toltén" },
+  { id: 6, nombre_alumno: "Leidy Vasquez", sede: "Toltén" },
+  { id: 7, nombre_alumno: "Cristhofer Norambuena", sede: "Toltén" },
+  { id: 8, nombre_alumno: "Tomas Paredes", sede: "Toltén" },
+  { id: 9, nombre_alumno: "Axel Vasquez", sede: "Toltén" },
+  { id: 10, nombre_alumno: "Sofia Sandoval", sede: "Toltén" },
+  { id: 11, nombre_alumno: "Valentina Castro", sede: "Toltén" },
+  { id: 12, nombre_alumno: "Martina Castro", sede: "Toltén" },
+  { id: 13, nombre_alumno: "Eddy Castro", sede: "Toltén" },
+  { id: 14, nombre_alumno: "Patricia Ponce", sede: "Toltén" },
+  { id: 15, nombre_alumno: "Fernanda Carrasco", sede: "Toltén" },
+  { id: 16, nombre_alumno: "Antonella Nuñez", sede: "Toltén" },
+  { id: 17, nombre_alumno: "Victor Nuñez", sede: "Toltén" },
+  { id: 18, nombre_alumno: "Dionisia", sede: "Toltén" },
+  { id: 19, nombre_alumno: "Jose", sede: "Toltén" },
+  { id: 20, nombre_alumno: "Isidora Cheuque", sede: "Toltén" },
+  { id: 21, nombre_alumno: "Cesar", sede: "Toltén" },
+  { id: 22, nombre_alumno: "Ivanna", sede: "Toltén" },
+  { id: 23, nombre_alumno: "Sebastian Valencia", sede: "Toltén" },
+  { id: 24, nombre_alumno: "Krishna Leal", sede: "Toltén" },
+  { id: 25, nombre_alumno: "Nayadett Zapata", sede: "Toltén" },
+  { id: 26, nombre_alumno: "tio nuevo", sede: "Toltén" },
+  { id: 27, nombre_alumno: "dora cortes", sede: "Toltén" },
+  { id: 28, nombre_alumno: "Carlos Cortez", sede: "Toltén" },
+  { id: 29, nombre_alumno: "hija del tio nuevo", sede: "Toltén" },
+  { id: 30, nombre_alumno: "Karlita Alarcon", sede: "Teodoro" },
+  { id: 31, nombre_alumno: "Pia", sede: "Teodoro" },
+  { id: 32, nombre_alumno: "Barbara Jimenez", sede: "Teodoro" },
+  { id: 33, nombre_alumno: "Erick Quiñelem", sede: "Teodoro" },
+  { id: 34, nombre_alumno: "Greco Muñoz", sede: "Teodoro" },
+  { id: 35, nombre_alumno: "Paz Lopez", sede: "Teodoro" },
+  { id: 36, nombre_alumno: "Maximiliano Arevalo", sede: "Teodoro" },
+  { id: 37, nombre_alumno: "Yoselin Sepulveda", sede: "Teodoro" },
+  { id: 38, nombre_alumno: "Tomas Andara", sede: "Teodoro" },
+  { id: 39, nombre_alumno: "Isidora Andara", sede: "Teodoro" },
+  { id: 40, nombre_alumno: "Scarleth Bernal", sede: "Teodoro" },
+  { id: 41, nombre_alumno: "Antonella Quilaqueo", sede: "Teodoro" },
+  { id: 42, nombre_alumno: "Joaquin Lopez", sede: "Carahue" },
+  { id: 43, nombre_alumno: "Mirtha Rabanal", sede: "Carahue" },
+  { id: 44, nombre_alumno: "Sixto Burgos", sede: "Carahue" },
+  { id: 45, nombre_alumno: "Maite San Martin", sede: "Carahue" },
+  { id: 46, nombre_alumno: "Josefa Muñoz", sede: "Carahue" },
+  { id: 47, nombre_alumno: "Martina Muñoz", sede: "Carahue" },
+  { id: 48, nombre_alumno: "Felipe Thiers", sede: "Carahue" },
+  { id: 49, nombre_alumno: "Jaime Salas", sede: "Carahue" },
+  { id: 50, nombre_alumno: "Alejandra", sede: "Carahue" },
+  { id: 51, nombre_alumno: "Betsabe Martinez", sede: "Carahue" },
+  { id: 52, nombre_alumno: "John Leal", sede: "Carahue" },
+  { id: 53, nombre_alumno: "Sabta Gonzalez", sede: "Carahue" },
+  { id: 54, nombre_alumno: "Maylen Ramos", sede: "Carahue" },
+  { id: 55, nombre_alumno: "Sayen Aparicio", sede: "Carahue" },
+  { id: 56, nombre_alumno: "Roman Lopez", sede: "Carahue" },
+  { id: 57, nombre_alumno: "Alexander", sede: "Carahue" },
+  { id: 58, nombre_alumno: "Vanessa", sede: "Carahue" },
 ];
 
 export default function Attendance() {
@@ -30,6 +79,13 @@ export default function Attendance() {
   async function fetchData() {
     setLoading(true);
     setSaved(false);
+
+    if (!supabase) {
+      setStudents(MOCK_STUDENTS.filter(s => s.sede === sede));
+      setAsistencias({});
+      setLoading(false);
+      return;
+    }
 
     const { data: alumnosData } = await supabase
       .from('alumnos')
@@ -65,13 +121,13 @@ export default function Attendance() {
 
   async function guardarAsistencia() {
     setSaving('all');
-    for (const s of students) {
-      const presente = asistencias[s.id] ?? false;
-      await supabase.from('asistencias').upsert({
+    if (supabase) {
+      const records = students.map(s => ({
         alumno_id: s.id,
         fecha,
-        presente,
-      }, { onConflict: 'alumno_id,fecha' });
+        presente: asistencias[s.id] ?? false,
+      }));
+      await supabase.from('asistencias').upsert(records, { onConflict: 'alumno_id,fecha' });
     }
     setSaving(null);
     setSaved(true);

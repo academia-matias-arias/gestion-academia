@@ -1,10 +1,12 @@
 import { createClient } from '@supabase/supabase-js'
 
-// You must create a .env.local file in the root of the project with these variables:
-// VITE_SUPABASE_URL=your-supabase-url
-// VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co'
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key'
+const isConfigured = !!(supabaseUrl && supabaseAnonKey &&
+  !supabaseUrl.includes('placeholder') &&
+  !supabaseUrl.includes('TU_PROYECTO'))
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = isConfigured
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null

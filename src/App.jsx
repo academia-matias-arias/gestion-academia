@@ -12,8 +12,7 @@ function App() {
         {/* Desktop Sidebar / Mobile Bottom Nav */}
         <nav className="bottom-nav">
           <div className="sidebar-logo">
-            <span>🎵</span>
-            <span>Academia de Cueca</span>
+            <img src="/logo-academia-sin-fonde.png" alt="Academia de Cueca" />
           </div>
           <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} end>
             <Home />

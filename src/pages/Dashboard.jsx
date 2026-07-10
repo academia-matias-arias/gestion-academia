@@ -22,6 +22,19 @@ export default function Dashboard() {
 
   async function fetchStats() {
     setLoading(true);
+    if (!supabase) {
+      setStats({
+        totalAlumnos: 58, activos: 55, pagosEsteMes: 43, morosos: 12,
+        ingresosMes: 635000,
+        sedes: [
+          { nombre: 'Carahue', count: 17 },
+          { nombre: 'Teodoro', count: 12 },
+          { nombre: 'Toltén', count: 29 },
+        ]
+      });
+      setLoading(false);
+      return;
+    }
     try {
       // Total and active students
       const { data: alumnos } = await supabase.from('alumnos').select('id, estado, sede, valor_mensualidad');
@@ -48,13 +61,12 @@ export default function Dashboard() {
 
       setStats({ totalAlumnos, activos, pagosEsteMes, morosos: Math.max(0, morosos), ingresosMes, sedes });
     } catch (err) {
-      // Use mock data if Supabase is not configured yet
       setStats({
-        totalAlumnos: 60, activos: 55, pagosEsteMes: 43, morosos: 12,
-        ingresosMes: 645000,
+        totalAlumnos: 58, activos: 55, pagosEsteMes: 43, morosos: 12,
+        ingresosMes: 635000,
         sedes: [
           { nombre: 'Carahue', count: 17 },
-          { nombre: 'Teodoro', count: 14 },
+          { nombre: 'Teodoro', count: 12 },
           { nombre: 'Toltén', count: 29 },
         ]
       });
@@ -75,7 +87,7 @@ export default function Dashboard() {
         <>
           <div className="stats-grid">
             <div className="stat-card">
-              <Users size={28} color="var(--primary-color)" />
+              <Users size={28} color="var(--primary)" />
               <div className="stat-value">{stats.totalAlumnos}</div>
               <div className="stat-label">Total Alumnos</div>
             </div>
@@ -85,8 +97,8 @@ export default function Dashboard() {
               <div className="stat-label">Activos</div>
             </div>
             <div className="stat-card">
-              <TrendingUp size={28} color="var(--secondary-color)" />
-              <div className="stat-value" style={{ color: 'var(--secondary-color)', fontSize: '1.2rem' }}>
+              <TrendingUp size={28} color="var(--secondary)" />
+              <div className="stat-value" style={{ color: 'var(--secondary)', fontSize: '1.2rem' }}>
                 {formatCLP(stats.ingresosMes)}
               </div>
               <div className="stat-label">Ingresos {stats.mesActual}</div>
