@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { Search, Plus, X, ChevronRight, Phone } from 'lucide-react';
+import { Search, Plus, X, ChevronRight } from 'lucide-react';
+import { useToast } from '../components/Toast';
 
 const SEDES = ['Carahue', 'Teodoro', 'Toltén'];
 const ESTADOS = ['activo', 'congelado', 'retiro_momentaneo', 'retirado'];
@@ -79,6 +80,7 @@ export default function Students() {
   const [form, setForm] = useState(EMPTY_FORM);
   const [editId, setEditId] = useState(null);
   const [saving, setSaving] = useState(false);
+  const { addToast } = useToast();
 
   useEffect(() => { fetchStudents(); }, []);
 
@@ -132,6 +134,7 @@ export default function Students() {
     }
     setSaving(false);
     setShowModal(false);
+    addToast(editId ? 'Alumno actualizado correctamente' : 'Alumno creado correctamente');
   }
 
   async function handleDelete(id) {
@@ -140,6 +143,7 @@ export default function Students() {
       await supabase.from('alumnos').delete().eq('id', id);
     }
     setStudents(prev => prev.filter(s => s.id !== id));
+    addToast('Alumno eliminado correctamente');
   }
 
   return (

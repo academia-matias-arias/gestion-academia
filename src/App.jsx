@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import { Home, Users, DollarSign, CalendarCheck } from 'lucide-react';
+import { ToastProvider } from './components/Toast';
 import Dashboard from './pages/Dashboard';
 import Students from './pages/Students';
 import Payments from './pages/Payments';
@@ -7,6 +8,7 @@ import Attendance from './pages/Attendance';
 
 function App() {
   return (
+    <ToastProvider>
     <Router>
       <div className="app-container">
         {/* Desktop Sidebar / Mobile Bottom Nav */}
@@ -35,8 +37,8 @@ function App() {
         {/* Main Content Area */}
         <main className="main-content">
           <header className="mobile-header">
-            <span>🎵</span>
-            <h1>Academia de Cueca</h1>
+            <img src="/logo-academia-sin-fonde.png" alt="Academia de Cueca" className="header-logo" />
+            <h1 style={{ color: 'var(--text)' }}>Gestión de Estudiantes</h1>
           </header>
           
           <Routes>
@@ -48,6 +50,7 @@ function App() {
         </main>
       </div>
     </Router>
+    </ToastProvider>
   );
 }
 

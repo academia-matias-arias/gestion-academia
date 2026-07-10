@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { Check, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
+import { Check } from 'lucide-react';
+import { useToast } from '../components/Toast';
 
 const MESES = ['Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 const SEDES = ['Todas', 'Carahue', 'Teodoro', 'Toltén'];
@@ -78,6 +79,7 @@ export default function Payments() {
   const [sedeFilter, setSedeFilter] = useState('Todas');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(null);
+  const { addToast } = useToast();
 
   useEffect(() => { fetchData(); }, [mes]);
 
@@ -138,6 +140,7 @@ export default function Payments() {
       setPagos(prev => ({ ...prev, [alumno.id]: true }));
     }
     setSaving(null);
+    addToast(pagado ? 'Pago anulado' : 'Pago registrado correctamente');
   }
 
   const filtered = sedeFilter === 'Todas' ? students : students.filter(s => s.sede === sedeFilter);

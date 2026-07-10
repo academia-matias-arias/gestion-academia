@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { Check, X, Calendar } from 'lucide-react';
+import { Check, X } from 'lucide-react';
+import { useToast } from '../components/Toast';
 
 const SEDES = ['Carahue', 'Teodoro', 'Toltén'];
 
@@ -73,6 +74,7 @@ export default function Attendance() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(null);
   const [saved, setSaved] = useState(false);
+  const { addToast } = useToast();
 
   useEffect(() => { fetchData(); }, [sede, fecha]);
 
@@ -131,6 +133,7 @@ export default function Attendance() {
     }
     setSaving(null);
     setSaved(true);
+    addToast('Asistencia guardada correctamente');
   }
 
   const presentes = students.filter(s => asistencias[s.id] === true).length;
@@ -173,11 +176,11 @@ export default function Attendance() {
 
       {/* Quick actions */}
       <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
-        <button className="btn btn-outline" style={{ flex: 1, color: 'var(--success)', borderColor: 'var(--success)' }} onClick={() => marcarTodos(true)}>
-          <Check size={16} /> Todos presentes
+        <button className="btn btn-outline" style={{ flex: 1, color: 'var(--success)', borderColor: 'var(--success)', fontSize: '0.78rem', padding: '0.4rem 0.75rem', minHeight: '36px' }} onClick={() => marcarTodos(true)}>
+          <Check size={14} /> Todos presentes
         </button>
-        <button className="btn btn-outline" style={{ flex: 1, color: 'var(--danger)', borderColor: 'var(--danger)' }} onClick={() => marcarTodos(false)}>
-          <X size={16} /> Todos ausentes
+        <button className="btn btn-outline" style={{ flex: 1, color: 'var(--danger)', borderColor: 'var(--danger)', fontSize: '0.78rem', padding: '0.4rem 0.75rem', minHeight: '36px' }} onClick={() => marcarTodos(false)}>
+          <X size={14} /> Todos ausentes
         </button>
       </div>
 
