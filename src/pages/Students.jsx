@@ -112,16 +112,18 @@ export default function Students() {
 
   async function handleSave() {
     setSaving(true);
-    const cleanForm = { ...form, fecha_nacimiento: form.fecha_nacimiento || null };
+    let cleanForm = { ...form, fecha_nacimiento: form.fecha_nacimiento || null };
     if (editId) {
+      const { id: _id, ...updateData } = cleanForm;
       setStudents(prev => prev.map(s => s.id === editId ? { ...s, ...cleanForm } : s));
       if (supabase) {
-        const { error } = await supabase.from('alumnos').update(cleanForm).eq('id', editId);
+        const { error } = await supabase.from('alumnos').update(updateData).eq('id', editId);
         if (error) console.error('Error al actualizar alumno:', error.message);
       }
     } else {
+      const { id: _id, ...insertData } = cleanForm;
       if (supabase) {
-        const { data, error } = await supabase.from('alumnos').insert([cleanForm]).select().single();
+        const { data, error } = await supabase.from('alumnos').insert([insertData]).select().single();
         if (!error && data) {
           setStudents(prev => [...prev, data]);
         } else if (error) {
