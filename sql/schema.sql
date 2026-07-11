@@ -54,6 +54,22 @@ ALTER TABLE pagos ENABLE ROW LEVEL SECURITY;
 ALTER TABLE asistencias ENABLE ROW LEVEL SECURITY;
 
 -- 6. POLÍTICAS RLS (acceso público para el panel admin)
+-- Se eliminan primero para evitar errores si ya existen
+DROP POLICY IF EXISTS "Public read alumnos" ON alumnos;
+DROP POLICY IF EXISTS "Public insert alumnos" ON alumnos;
+DROP POLICY IF EXISTS "Public update alumnos" ON alumnos;
+DROP POLICY IF EXISTS "Public delete alumnos" ON alumnos;
+
+DROP POLICY IF EXISTS "Public read pagos" ON pagos;
+DROP POLICY IF EXISTS "Public insert pagos" ON pagos;
+DROP POLICY IF EXISTS "Public update pagos" ON pagos;
+DROP POLICY IF EXISTS "Public delete pagos" ON pagos;
+
+DROP POLICY IF EXISTS "Public read asistencias" ON asistencias;
+DROP POLICY IF EXISTS "Public insert asistencias" ON asistencias;
+DROP POLICY IF EXISTS "Public update asistencias" ON asistencias;
+DROP POLICY IF EXISTS "Public delete asistencias" ON asistencias;
+
 CREATE POLICY "Public read alumnos" ON alumnos FOR SELECT USING (true);
 CREATE POLICY "Public insert alumnos" ON alumnos FOR INSERT WITH CHECK (true);
 CREATE POLICY "Public update alumnos" ON alumnos FOR UPDATE USING (true);
