@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import { Home, Users, DollarSign, CalendarCheck } from 'lucide-react';
+import { Home, Users, DollarSign, CalendarCheck, PanelLeftClose, PanelLeft } from 'lucide-react';
 import { ToastProvider } from './components/Toast';
 import Dashboard from './pages/Dashboard';
 import Students from './pages/Students';
@@ -7,15 +8,24 @@ import Payments from './pages/Payments';
 import Attendance from './pages/Attendance';
 
 function App() {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
   return (
     <ToastProvider>
     <Router>
       <div className="app-container">
         {/* Desktop Sidebar / Mobile Bottom Nav */}
-        <nav className="bottom-nav">
+        <nav className={`bottom-nav${sidebarCollapsed ? ' collapsed' : ''}`}>
           <div className="sidebar-logo">
             <img src="/logo-academia-sin-fonde.png" alt="Academia de Cueca" />
           </div>
+          <button
+            className="sidebar-toggle"
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            title={sidebarCollapsed ? 'Expandir menú' : 'Colapsar menú'}
+          >
+            {sidebarCollapsed ? <PanelLeft size={20} /> : <PanelLeftClose size={20} />}
+          </button>
           <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} end>
             <Home />
             <span>Inicio</span>
