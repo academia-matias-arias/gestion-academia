@@ -1,3 +1,7 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }],
+  "crons": [
+    { "path": "/api/cumpleanos", "schedule": "0 13 * * *" },
+    { "path": "/api/pagos", "schedule": "0 13 * * *" }
+  ]
 }

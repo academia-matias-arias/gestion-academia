@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS alumnos (
   sede TEXT NOT NULL,
   contacto TEXT DEFAULT '',
   valor_mensualidad INTEGER NOT NULL DEFAULT 15000,
+  dia_pago SMALLINT CHECK (dia_pago BETWEEN 1 AND 31),
   estado TEXT NOT NULL DEFAULT 'activo',
   motivo_retiro TEXT DEFAULT '',
   beca BOOLEAN DEFAULT false,

@@ -68,7 +68,7 @@ const MOCK_STUDENTS = [
   { id: 58, nombre_alumno: "Vanessa", edad: "", fecha_nacimiento: "", sede: "Carahue", contacto: "", valor_mensualidad: 15000, estado: "activo" },
 ];
 
-const EMPTY_FORM = { nombre_alumno: '', edad: '', fecha_nacimiento: '', sede: 'Carahue', contacto: '', valor_mensualidad: 15000, estado: 'activo', motivo_retiro: '', beca: false, monto_beca: 0 };
+const EMPTY_FORM = { nombre_alumno: '', edad: '', fecha_nacimiento: '', sede: 'Carahue', contacto: '', valor_mensualidad: 15000, dia_pago: '', estado: 'activo', motivo_retiro: '', beca: false, monto_beca: 0 };
 
 export default function Students() {
   const [students, setStudents] = useState([]);
@@ -112,7 +112,7 @@ export default function Students() {
 
   async function handleSave() {
     setSaving(true);
-    let cleanForm = { ...form, fecha_nacimiento: form.fecha_nacimiento || null };
+    let cleanForm = { ...form, fecha_nacimiento: form.fecha_nacimiento || null, dia_pago: form.dia_pago ? Number(form.dia_pago) : null };
     if (editId) {
       const { id: _id, ...updateData } = cleanForm;
       setStudents(prev => prev.map(s => s.id === editId ? { ...s, ...cleanForm } : s));
@@ -233,14 +233,18 @@ export default function Students() {
                   </select>
                 </div>
               </div>
+              <div className="form-group">
+                <label className="form-label">Contacto (celular)</label>
+                <input className="form-control" value={form.contacto} onChange={e => setForm({...form, contacto: e.target.value})} placeholder="+56 9 1234 5678" />
+              </div>
               <div className="form-row">
-                <div className="form-group">
-                  <label className="form-label">Contacto (celular)</label>
-                  <input className="form-control" value={form.contacto} onChange={e => setForm({...form, contacto: e.target.value})} placeholder="+56 9 1234 5678" />
-                </div>
                 <div className="form-group">
                   <label className="form-label">Mensualidad ($)</label>
                   <input type="number" className="form-control" value={form.valor_mensualidad} onChange={e => setForm({...form, valor_mensualidad: Number(e.target.value)})} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Día de pago mensual</label>
+                  <input type="number" min="1" max="31" className="form-control" value={form.dia_pago || ''} onChange={e => setForm({...form, dia_pago: e.target.value})} placeholder="Ej: 5" />
                 </div>
               </div>
               <div className="form-row">
